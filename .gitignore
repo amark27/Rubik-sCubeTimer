@@ -1,0 +1,5 @@
+#dependencies
+rubik_timer/node_modules/
+
+#Visual Studio
+rubik_timer/.vscode/
