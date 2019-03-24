@@ -1,1 +1,1 @@
-# Rubik-sCubeTimer
+# RubiksCubeTimer
