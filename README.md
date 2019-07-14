@@ -1,9 +1,5 @@
 # RubiksCubeTimer
-Timer for Rubik's Cube solvers that also tracks their times.
-
-&nbsp;
-
-Made with ReactJS.
+Timer for Rubik's Cube solvers that also tracks their times. Made with ReactJS.
 
 &nbsp;
 
