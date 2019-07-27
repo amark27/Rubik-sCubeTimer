@@ -7,7 +7,12 @@
   text-align: center;
 }
 
-.timeTable {
+div.container-table {
+  height: 60vh;
+  overflow-y: scroll;
+}
+
+div.container-table .timeTable {
   position: absolute;
   left: 10px;
   top: 10px;
@@ -17,12 +22,12 @@
   font-size: 20pt;
 }
 
-.timeTable th {
+div.container-table .timeTable th {
   border-bottom: 1px solid black;
 }
 
-.timeTable td:nth-child(even),
-.timeTable th:nth-child(even) {
+div.container-table .timeTable td:nth-child(even),
+div.container-table .timeTable th:nth-child(even) {
   border-left: 1px solid black;
 }
 /*# sourceMappingURL=styles.css.map */

@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import "./scss-css/styles.css";
 import Timer from "./components/timer.jsx";
-import TableTimes from "./components/timeTable.jsx"
+import TableTimes from "./components/timeTable.jsx";
+import Graph from "./components/graph.jsx";
 
 const SPACE_KEY = 32;
 
@@ -14,7 +15,6 @@ class App extends Component {
     };
   }
   
-
   componentDidMount(){
     window.addEventListener('keyup', (e) => this.updateTimer(e));
   }
@@ -34,6 +34,7 @@ class App extends Component {
     <React.Fragment>
       <Timer running={this.state.timerRunning} times={this.state.times} addTime={this.addTime}/>
       <TableTimes times={this.state.times}/>
+      <Graph times={this.state.times}/>
     </React.Fragment>
     );
   }
