@@ -11,17 +11,24 @@ class App extends Component {
     super();
     this.state = {
       timerRunning: false,
+      timerPrepare: false,
       times: [] 
     };
   }
   
   componentDidMount(){
     window.addEventListener('keyup', (e) => this.updateTimer(e));
+    window.addEventListener('keydown', (e) => this.flashTimer(e));
   }
 
   updateTimer = (e) => {
+    if (e.keyCode === SPACE_KEY) 
+      this.setState(state => ({timerRunning: !state.timerRunning, timerPrepare: false}));
+  }
+  
+  flashTimer = (e) => {
     if (e.keyCode === SPACE_KEY)
-      this.setState((state) => ({timerRunning: !state.timerRunning}))
+      this.setState({timerPrepare: true});
   }
 
   addTime = (time) => {
@@ -32,7 +39,8 @@ class App extends Component {
   render() {
     return (
     <React.Fragment>
-      <Timer running={this.state.timerRunning} times={this.state.times} addTime={this.addTime}/>
+      <Timer running={this.state.timerRunning} prepare = {this.state.timerPrepare} 
+            times={this.state.times} addTime={this.addTime}/>
       <TableTimes times={this.state.times}/>
       <Graph times={this.state.times}/>
     </React.Fragment>

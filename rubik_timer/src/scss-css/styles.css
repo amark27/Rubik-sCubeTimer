@@ -3,13 +3,41 @@
   font-size: 50pt;
 }
 
+.timer.flash {
+  -webkit-animation-name: flash-anim;
+          animation-name: flash-anim;
+  -webkit-animation-direction: alternate;
+          animation-direction: alternate;
+  -webkit-animation-duration: 0.5s;
+          animation-duration: 0.5s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+}
+
+@-webkit-keyframes flash-anim {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes flash-anim {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
 .average {
   text-align: center;
 }
 
 div.container-table {
   height: 60vh;
-  overflow-y: scroll;
 }
 
 div.container-table .timeTable {

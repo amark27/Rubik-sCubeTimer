@@ -6,8 +6,8 @@ export default class Timer extends Component {
 	constructor(props) {
 		super(props);
 
-		//times stored in seconds
-		this.state = { min: 0, sec: 0, msec: 0, running: this.props.running, times: this.props.times};
+		this.state = { min: 0, sec: 0, msec: 0, running: this.props.running, 
+					prepare: this.props.prepare, times: this.props.times};
 	}
 
 	componentDidUpdate(prevProps) {
@@ -20,6 +20,9 @@ export default class Timer extends Component {
 				this.setState({min: 0, sec: 0, msec: 0});
 				this.increment();
 			}
+		}
+		if (prevProps.prepare !== this.props.prepare){
+			this.setState({prepare: this.props.prepare});
 		}
 	}
 
@@ -44,10 +47,15 @@ export default class Timer extends Component {
 		return secTime;
 	}
 
+	getClasses = () => {
+		let extraClass = this.state.prepare ? "flash" : "";
+		return "timer " + extraClass;
+	}
+
 	render() {    
 		return (
 			<React.Fragment>
-				<h1 className="timer">{displayTime(this.state.min, this.state.sec, this.state.msec)}</h1>
+				<h1 className={this.getClasses()}>{displayTime(this.state.min, this.state.sec, this.state.msec)}</h1>
 				<Avg times={this.state.times}/>
 			</React.Fragment>
 		);
