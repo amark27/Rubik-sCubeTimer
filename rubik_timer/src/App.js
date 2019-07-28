@@ -3,6 +3,7 @@ import "./scss-css/styles.css";
 import Timer from "./components/timer.jsx";
 import TableTimes from "./components/timeTable.jsx";
 import Graph from "./components/graph.jsx";
+import ScrambleGen from "./components/scrambleGen.jsx";
 
 const SPACE_KEY = 32;
 
@@ -42,6 +43,7 @@ class App extends Component {
       <Timer running={this.state.timerRunning} prepare = {this.state.timerPrepare} 
             times={this.state.times} addTime={this.addTime}/>
       <TableTimes times={this.state.times}/>
+      <ScrambleGen update={this.state.timerRunning}/>
       <Graph times={this.state.times}/>
     </React.Fragment>
     );

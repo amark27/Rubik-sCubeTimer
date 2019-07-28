@@ -24,7 +24,6 @@
 }
 
 div.container-table{
-    height: 60vh;
 
     .timeTable {
         position: absolute;
@@ -43,4 +42,10 @@ div.container-table{
             border-left: 1px solid black;
         }
     }
+}
+
+.scramble{
+    margin-top: 3rem;
+    text-align: center;
+    font-size: 25pt;
 }

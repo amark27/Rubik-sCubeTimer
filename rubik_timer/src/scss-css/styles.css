@@ -36,10 +36,6 @@
   text-align: center;
 }
 
-div.container-table {
-  height: 60vh;
-}
-
 div.container-table .timeTable {
   position: absolute;
   left: 10px;
@@ -57,5 +53,11 @@ div.container-table .timeTable th {
 div.container-table .timeTable td:nth-child(even),
 div.container-table .timeTable th:nth-child(even) {
   border-left: 1px solid black;
+}
+
+.scramble {
+  margin-top: 3rem;
+  text-align: center;
+  font-size: 25pt;
 }
 /*# sourceMappingURL=styles.css.map */
