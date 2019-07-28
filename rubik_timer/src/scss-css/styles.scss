@@ -24,15 +24,18 @@
 }
 
 div.container-table{
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 50vh;
+    width: 12vw;
+    left: 10px;
+    top: 10px;
+    position: absolute;
+    font-size: 20pt;
 
     .timeTable {
-        position: absolute;
-        left: 10px;
-        top: 10px;
-        width: 10vw;
         border-collapse: collapse;
         text-align: center;
-        font-size: 20pt;
 
         th {
             border-bottom: 1px solid black;
@@ -40,6 +43,10 @@ div.container-table{
         td:nth-child(even),
         th:nth-child(even){
             border-left: 1px solid black;
+        }
+
+        td, th{
+            padding: 5px;
         }
     }
 }
