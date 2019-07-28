@@ -1,5 +1,7 @@
 import React from "react";
 import CanvasJSReact from "../assets/canvasjs.react.js";
+import { blue, darkBlue } from "./utilities.jsx";
+
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 const Graph = props => {
@@ -16,7 +18,7 @@ const Graph = props => {
 		},
 		axisY: {
 			title: "Time (sec)",
-			includeZero: false
+			includeZero: true
 		},
 		axisX: {
 			title: "ID",
@@ -26,7 +28,9 @@ const Graph = props => {
 			{
 				type: "line",
 				toolTipContent: "{x}: {y} sec",
-				dataPoints: points
+				dataPoints: points,
+				color: darkBlue,
+				lineColor: blue
 			}
 		]
 	};

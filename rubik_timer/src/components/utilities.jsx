@@ -1,3 +1,6 @@
+export var blue = "#619DDD";
+export var darkBlue = "#083668";
+
 export const formatNumber = (num) => {
 	return ("0" + num).slice(-2);
 }
