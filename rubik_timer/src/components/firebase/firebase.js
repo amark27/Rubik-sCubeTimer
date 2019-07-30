@@ -1,4 +1,5 @@
 import firebase from "firebase/app";
+var db; 
 
 const firebaseConfig = {
     apiKey: process.env.REACT_APP_API_KEY,
@@ -13,5 +14,15 @@ const firebaseConfig = {
 export default class Firebase {
     constructor(){
         firebase.initializeApp(firebaseConfig);
+        //db = firebase.firestore();
     }
+
+    // getUsers = () => {
+    //     //let collection = new CollectionReference();
+    //     db.collection('users').get().then((response) => {
+    //         response.docs.forEach(doc => {
+    //             console.log(doc.data());
+    //         })
+    //     });
+    // }
 }

@@ -6,6 +6,7 @@ export default class ScrambleGen extends Component {
 
     //update only when the timer stops running after a solve
     shouldComponentUpdate(nextProps){
+        // eslint-disable-next-line
         return nextProps.update == false && this.props.update == true;
     }
 

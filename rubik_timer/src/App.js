@@ -4,10 +4,12 @@ import Timer from "./components/timer.jsx";
 import TableTimes from "./components/timeTable.jsx";
 import Graph from "./components/graph.jsx";
 import ScrambleGen from "./components/scrambleGen.jsx";
+import { withFirebase } from "./components/firebase/firebaseIndex";
+import axios from "axios";
 
 const SPACE_KEY = 32;
 
-class App extends Component {
+class AppBase extends Component {
   constructor(){
     super();
     this.state = {
@@ -20,6 +22,16 @@ class App extends Component {
   componentDidMount(){
     window.addEventListener('keyup', (e) => this.updateTimer(e));
     window.addEventListener('keydown', (e) => this.flashTimer(e));
+
+    //get ip to register user
+    axios.get("http://api.ipify.org/?format=json")
+    .then((response) => {
+      const ip = response.data.ip;
+      console.log(ip);
+    }).catch((err) => {
+      console.log(err);
+    });
+    //this.props.firebase.getUsers();
   }
 
   updateTimer = (e) => {
@@ -50,4 +62,7 @@ class App extends Component {
   }
 }
 
+const App = withFirebase(AppBase);
+
 export default App;
+
