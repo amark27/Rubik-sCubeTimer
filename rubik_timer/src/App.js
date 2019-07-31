@@ -27,11 +27,11 @@ class AppBase extends Component {
     axios.get("http://api.ipify.org/?format=json")
     .then((response) => {
       const ip = response.data.ip;
-      console.log(ip);
+      this.props.firebase.addIP(ip);
     }).catch((err) => {
       console.log(err);
     });
-    //this.props.firebase.getUsers();
+    
   }
 
   updateTimer = (e) => {

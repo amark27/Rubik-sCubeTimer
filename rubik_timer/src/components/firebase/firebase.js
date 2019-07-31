@@ -1,4 +1,6 @@
-import firebase from "firebase/app";
+import * as firebase from 'firebase';
+import 'firebase/firestore';
+
 var db; 
 
 const firebaseConfig = {
@@ -13,16 +15,23 @@ const firebaseConfig = {
 
 export default class Firebase {
     constructor(){
-        firebase.initializeApp(firebaseConfig);
-        //db = firebase.firestore();
+        var app = firebase.initializeApp(firebaseConfig);
+        db = firebase.firestore(app);
     }
 
-    // getUsers = () => {
-    //     //let collection = new CollectionReference();
-    //     db.collection('users').get().then((response) => {
-    //         response.docs.forEach(doc => {
-    //             console.log(doc.data());
-    //         })
-    //     });
-    // }
+    addIP = (ip) => {
+        db.collection('users').get().then(response => {
+            let foundIP = false;
+            response.docs.forEach(doc => {
+                if (doc.data().IP === ip)
+                    foundIP = true;
+            })
+            if (!foundIP)
+                this.registerUserIP(ip);
+        });
+    }
+
+    registerUserIP = (ip) => {
+        db.collection('users').add({IP: ip}).then();
+    }
 }
