@@ -6,6 +6,7 @@ import Graph from "./components/graph.jsx";
 import ScrambleGen from "./components/scrambleGen.jsx";
 import { withFirebase } from "./components/firebase/firebaseIndex";
 import axios from "axios";
+import { IP, setIP } from "./globals.js";
 
 const SPACE_KEY = 32;
 
@@ -24,14 +25,26 @@ class AppBase extends Component {
     window.addEventListener('keydown', (e) => this.flashTimer(e));
 
     //get ip to register user
+    this.getIP();
+  }
+
+  getIP = () => {
     axios.get("http://api.ipify.org/?format=json")
     .then((response) => {
-      const ip = response.data.ip;
-      this.props.firebase.addIP(ip);
+      setIP(response.data.ip);
+      this.props.firebase.addIP(IP);
+      this.getTimesFromDB(IP);
     }).catch((err) => {
       console.log(err);
-    });
-    
+    });   
+  }
+
+  getTimesFromDB = (ip) => {
+    this.props.firebase.getTimes(ip, this.setTimes);
+  }
+
+  setTimes = (times) => {
+    this.setState({ times });
   }
 
   updateTimer = (e) => {

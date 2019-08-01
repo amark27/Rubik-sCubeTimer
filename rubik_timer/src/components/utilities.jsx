@@ -19,7 +19,7 @@ export const convertSec = (min, sec, msec) => {
 }
 
 export const separateSec = (time) => {
-	return {min: Math.floor(time / 60), sec: Math.floor(time) % 60, msec: Math.floor((time - Math.floor(time)) * 100)};
+	return {min: Math.floor(time / 60), sec: Math.floor(time) % 60, msec: ((time-Math.floor(time)) % 1).toFixed(2).substring(2)};
 }
 
 //average of 5 for times drop the fastest and slowest time

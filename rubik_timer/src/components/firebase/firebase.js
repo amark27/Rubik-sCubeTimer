@@ -34,4 +34,16 @@ export default class Firebase {
     registerUserIP = (ip) => {
         db.collection('users').add({IP: ip}).then();
     }
+
+    getTimes = (ip, setTimes) => {
+        db.doc(`times/${ip}`).get().then(response => {
+            console.log(response);
+            if (response._document === null)
+                setTimes([]);
+            else{
+                console.log(response.data()[1])
+                setTimes([parseFloat(response.data()[1])]);
+            }
+        });
+    }
 }
