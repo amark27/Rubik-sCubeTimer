@@ -25,26 +25,26 @@ class AppBase extends Component {
     window.addEventListener('keydown', (e) => this.flashTimer(e));
 
     //get ip to register user
-    this.getIP();
+    this.setUp();
   }
 
-  getIP = () => {
+  componentWillUnmount(){
+    window.removeEventListener('keyup', (e) => this.updateTimer(e));
+    window.removeEventListener('keydown', (e) => this.flashTimer(e));
+  }
+  
+  setUp = () => {
     axios.get("http://api.ipify.org/?format=json")
     .then((response) => {
       setIP(response.data.ip);
-      this.props.firebase.addIP(IP);
-      this.getTimesFromDB(IP);
+      this.props.firebase.getTimes(IP, this.setTimes); //populate times array from db values
     }).catch((err) => {
       console.log(err);
     });   
   }
 
-  getTimesFromDB = (ip) => {
-    this.props.firebase.getTimes(ip, this.setTimes);
-  }
-
   setTimes = (times) => {
-    this.setState({ times });
+    this.setState({ times: times });
   }
 
   updateTimer = (e) => {

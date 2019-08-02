@@ -19,31 +19,18 @@ export default class Firebase {
         db = firebase.firestore(app);
     }
 
-    addIP = (ip) => {
-        db.collection('users').get().then(response => {
-            let foundIP = false;
-            response.docs.forEach(doc => {
-                if (doc.data().IP === ip)
-                    foundIP = true;
-            })
-            if (!foundIP)
-                this.registerUserIP(ip);
-        });
-    }
-
-    registerUserIP = (ip) => {
-        db.collection('users').add({IP: ip}).then();
-    }
-
     getTimes = (ip, setTimes) => {
         db.doc(`times/${ip}`).get().then(response => {
-            console.log(response);
-            if (response._document === null)
+            if (response._document == null || response.data()["times"] == null)
                 setTimes([]);
-            else{
-                console.log(response.data()[1])
-                setTimes([parseFloat(response.data()[1])]);
-            }
+            else 
+                setTimes(response.data()["times"]);
         });
+    }
+
+    storeTimes = (ip, times) => {
+        console.log("called");
+        console.log(times);
+        db.doc(`times/${ip}`).set({ times }).then();
     }
 }

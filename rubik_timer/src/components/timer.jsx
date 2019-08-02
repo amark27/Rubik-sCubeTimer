@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import Avg from "./avg.jsx";
-import {convertSec, displayTime} from "./utilities.jsx";
+import { convertSec, displayTime } from "./utilities.jsx";
+import { withFirebase } from "./firebase/firebaseIndex.js";
+import { IP } from "../globals";
 
-export default class Timer extends Component {
+class BaseTimer extends Component {
 	constructor(props) {
 		super(props);
 
@@ -15,7 +17,10 @@ export default class Timer extends Component {
 			if (prevProps.running) {
 				let newTime = this.stop();
 				this.props.addTime(newTime);
-				this.setState({times: this.props.times});
+
+				//store to firebase firestore after adding time
+				this.setState({times: this.props.times}, 
+							  () => {this.props.firebase.storeTimes(IP, this.state.times)});
 			} else {
 				this.setState({min: 0, sec: 0, msec: 0});
 				this.increment();
@@ -61,3 +66,7 @@ export default class Timer extends Component {
 		);
 	}
 }
+
+const Timer = withFirebase(BaseTimer);
+
+export default Timer;
