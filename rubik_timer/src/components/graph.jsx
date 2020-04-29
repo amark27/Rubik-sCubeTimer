@@ -1,6 +1,6 @@
 import React from "react";
 import CanvasJSReact from "../assets/canvasjs.react.js";
-import { blue, darkBlue } from "./utilities.jsx";
+import {orange} from "./utilities.jsx";
 
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
@@ -12,7 +12,8 @@ const Graph = props => {
 	const options = {
 		animationEnabled: true,
 		exportEnabled: true,
-		theme: "light2", // "light1", "dark1", "dark2"
+		theme: "dark2", // "light1", "dark1", "dark2"
+		//backgroundColor: '#FFFFFF',
 		title: {
 			text: "3x3 Times"
 		},
@@ -29,16 +30,14 @@ const Graph = props => {
 				type: "line",
 				toolTipContent: "{x}: {y} sec",
 				dataPoints: points,
-				color: darkBlue,
-				lineColor: blue
+				color: orange,
+				lineColor: orange
 			}
 		]
 	};
 
 	return (
-		<div>
-			<CanvasJSChart options={options} containerProps={{ width: "100%", bottom: "0px", position: "absolute" }} />
-		</div>
+		<CanvasJSChart options={options} containerProps={{ width: "100%", bottom: "0px", display: "table-row"}} />
 	);
 };
 

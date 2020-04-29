@@ -65,11 +65,16 @@ class AppBase extends Component {
   render() {
     return (
     <React.Fragment>
-      <Timer running={this.state.timerRunning} prepare = {this.state.timerPrepare} 
-            times={this.state.times} addTime={this.addTime}/>
+      <div className="main">
+        <div className="main-container">
+          <Timer running={this.state.timerRunning} prepare = {this.state.timerPrepare} 
+                times={this.state.times} addTime={this.addTime}/>
+          <ScrambleGen update={this.state.timerRunning}/>
+        </div>
+      </div>
       <TableTimes times={this.state.times}/>
-      <ScrambleGen update={this.state.timerRunning}/>
       <Graph times={this.state.times}/>
+
     </React.Fragment>
     );
   }

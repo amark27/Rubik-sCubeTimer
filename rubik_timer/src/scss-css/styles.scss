@@ -1,26 +1,50 @@
-.timer{
-    text-align: center;
-    font-size: 70pt;
-
-    &.flash{
-        animation-name: flash-anim;
-        animation-direction: alternate;
-        animation-duration: 0.5s;
-        animation-iteration-count: infinite;        
-    }
-
-    @keyframes flash-anim{
-        from {
-            opacity: 1;
-        }
-        to {
-            opacity: 0;
-        }
-    }
+body {
+    background-color: rgb(39,40,34);
+    color: white;
 }
 
-.average {
-    text-align: center;
+.main {
+    height: 100%;
+    display: table-cell;
+    vertical-align: middle;
+
+    .main-container{
+        display: inline-block;
+        width: 100%;
+        
+        .timer{
+            margin: 0;
+
+            text-align: center;
+            font-size: 70pt;
+        
+            &.flash{
+                animation-name: flash-anim;
+                animation-direction: alternate;
+                animation-duration: 0.5s;
+                animation-iteration-count: infinite;        
+            }
+        
+            @keyframes flash-anim{
+                from {
+                    opacity: 1;
+                }
+                to {
+                    opacity: 0;
+                }
+            }
+        }
+        
+        .average {
+            text-align: center;
+        }
+
+        .scramble{
+            margin-top: 3rem;
+            text-align: center;
+            font-size: 25pt;
+        }
+    }
 }
 
 div.container-table{
@@ -50,8 +74,3 @@ div.container-table{
     }
 }
 
-.scramble{
-    margin-top: 3rem;
-    text-align: center;
-    font-size: 25pt;
-}

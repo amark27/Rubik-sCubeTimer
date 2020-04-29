@@ -1,9 +1,26 @@
-.timer {
+body {
+  background-color: #272822;
+  color: white;
+}
+
+.main {
+  height: 100%;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.main .main-container {
+  display: inline-block;
+  width: 100%;
+}
+
+.main .main-container .timer {
+  margin: 0;
   text-align: center;
   font-size: 70pt;
 }
 
-.timer.flash {
+.main .main-container .timer.flash {
   -webkit-animation-name: flash-anim;
           animation-name: flash-anim;
   -webkit-animation-direction: alternate;
@@ -32,8 +49,14 @@
   }
 }
 
-.average {
+.main .main-container .average {
   text-align: center;
+}
+
+.main .main-container .scramble {
+  margin-top: 3rem;
+  text-align: center;
+  font-size: 25pt;
 }
 
 div.container-table {
@@ -62,11 +85,5 @@ div.container-table .timeTable th:nth-child(even) {
 
 div.container-table .timeTable td, div.container-table .timeTable th {
   padding: 5px;
-}
-
-.scramble {
-  margin-top: 3rem;
-  text-align: center;
-  font-size: 25pt;
 }
 /*# sourceMappingURL=styles.css.map */
