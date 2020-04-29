@@ -1,5 +1,7 @@
+$grey: #32373A;
+
 body {
-    background-color: rgb(39,40,34);
+    background-color: $grey;
     color: white;
 }
 
@@ -11,7 +13,7 @@ body {
     .main-container{
         display: inline-block;
         width: 100%;
-        
+
         .timer{
             margin: 0;
 
@@ -61,11 +63,12 @@ div.container-table{
         text-align: center;
 
         th {
-            border-bottom: 1px solid black;
+            border-bottom: 1px solid white;
         }
+
         td:nth-child(even),
         th:nth-child(even){
-            border-left: 1px solid black;
+            border-left: 1px solid white;
         }
 
         td, th{

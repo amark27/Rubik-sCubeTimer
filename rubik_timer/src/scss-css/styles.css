@@ -1,5 +1,5 @@
 body {
-  background-color: #272822;
+  background-color: #32373A;
   color: white;
 }
 
@@ -75,12 +75,12 @@ div.container-table .timeTable {
 }
 
 div.container-table .timeTable th {
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid white;
 }
 
 div.container-table .timeTable td:nth-child(even),
 div.container-table .timeTable th:nth-child(even) {
-  border-left: 1px solid black;
+  border-left: 1px solid white;
 }
 
 div.container-table .timeTable td, div.container-table .timeTable th {
