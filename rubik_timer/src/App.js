@@ -11,12 +11,13 @@ import { IP, setIP } from "./globals.js";
 const SPACE_KEY = 32;
 
 class AppBase extends Component {
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
     this.state = {
       timerRunning: false,
       timerPrepare: false,
-      times: [] 
+      times: [], 
+      scrambles: []
     };
   }
   
@@ -37,14 +38,23 @@ class AppBase extends Component {
     axios.get("http://api.ipify.org/?format=json")
     .then((response) => {
       setIP(response.data.ip);
-      this.props.firebase.getTimes(IP, this.setTimes); //populate times array from db values
+      this.props.firebase.getData(IP, this.setTimes, this.setScrambles); //populate times array from db values
+
     }).catch((err) => {
       console.log(err);
     });   
   }
 
-  setTimes = (times) => {
-    this.setState({ times: times });
+  setTimes = (t) => {
+    if (!t) return;
+    this.setState({ times: t });
+  }
+
+  setScrambles = (s) => {
+    if (!s) return;
+    //add the values of current scrambles to the scrambles from db
+    Array.prototype.push.apply(s, this.state.scrambles);
+    this.setState({ scrambles: s });
   }
 
   updateTimer = (e) => {
@@ -62,19 +72,23 @@ class AppBase extends Component {
     this.setState({times: this.state.times});
   } 
 
+  addScramble = (scramble) => {
+    this.state.scrambles.push(scramble);
+    this.setState({scrambles: this.state.scrambles});
+  } 
+
   render() {
     return (
     <React.Fragment>
       <div className="main">
         <div className="main-container">
           <Timer running={this.state.timerRunning} prepare = {this.state.timerPrepare} 
-                times={this.state.times} addTime={this.addTime}/>
-          <ScrambleGen update={this.state.timerRunning}/>
+                times={this.state.times} addTime={this.addTime} scrambles={this.state.scrambles}/>
+          <ScrambleGen update={this.state.timerRunning} addScramble={this.addScramble}/>
         </div>
       </div>
       <TableTimes times={this.state.times}/>
       <Graph times={this.state.times}/>
-
     </React.Fragment>
     );
   }

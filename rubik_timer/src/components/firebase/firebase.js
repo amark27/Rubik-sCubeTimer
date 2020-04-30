@@ -19,18 +19,20 @@ export default class Firebase {
         db = firebase.firestore(app);
     }
 
-    getTimes = (ip, setTimes) => {
+    getData = (ip, setTimes, setScrambles) => {
         db.doc(`times/${ip}`).get().then(response => {
-            if (response._document == null || response.data()["times"] == null)
+            if (response._document == null || response.data()["times"] == null) {
                 setTimes([]);
-            else 
+                setScrambles([]);
+            } else {
                 setTimes(response.data()["times"]);
+                setScrambles(response.data()["scrambles"]);
+            }
         });
     }
 
-    storeTimes = (ip, times) => {
-        console.log("called");
-        console.log(times);
-        db.doc(`times/${ip}`).set({ times }).then();
+    storeData = (ip, times, scrambles) => {
+        let d = {times, scrambles};
+        db.doc(`times/${ip}`).set(d).then();
     }
 }

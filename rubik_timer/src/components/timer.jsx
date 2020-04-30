@@ -19,8 +19,10 @@ class BaseTimer extends Component {
 				this.props.addTime(newTime);
 
 				//store to firebase firestore after adding time
+				//take all scrambles but the last one because the last one is for future solve
+				let scramble = this.props.scrambles.slice(0,-1);
 				this.setState({times: this.props.times}, 
-							  () => {this.props.firebase.storeTimes(IP, this.state.times)});
+							  () => {this.props.firebase.storeData(IP, this.state.times, scramble)});
 			} else {
 				this.setState({min: 0, sec: 0, msec: 0});
 				this.increment();
