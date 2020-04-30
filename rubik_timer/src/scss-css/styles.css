@@ -59,31 +59,52 @@ body {
   font-size: 25pt;
 }
 
-div.container-table {
+.container-scroll {
   overflow-y: auto;
   overflow-x: hidden;
-  height: 50vh;
+  height: calc(100vh - 400px);
+  width: 150px;
   left: 10px;
   top: 10px;
   position: absolute;
   font-size: 20pt;
+  direction: rtl;
 }
 
-div.container-table .timeTable {
+.container-scroll div.container-table {
+  direction: ltr;
+}
+
+.container-scroll div.container-table table.timeTable {
   border-collapse: collapse;
   text-align: center;
+  position: relative;
 }
 
-div.container-table .timeTable th {
+.container-scroll div.container-table table.timeTable th {
+  background-color: #32373A;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
+
+.container-scroll div.container-table table.timeTable th::after {
+  content: '';
+  position: absolute;
+  z-index: 100;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
   border-bottom: 1px solid white;
 }
 
-div.container-table .timeTable td:nth-child(even),
-div.container-table .timeTable th:nth-child(even) {
+.container-scroll div.container-table table.timeTable td:nth-child(even),
+.container-scroll div.container-table table.timeTable th:nth-child(even) {
   border-left: 1px solid white;
 }
 
-div.container-table .timeTable td, div.container-table .timeTable th {
+.container-scroll div.container-table table.timeTable td, .container-scroll div.container-table table.timeTable th {
   padding: 5px;
 }
 /*# sourceMappingURL=styles.css.map */
