@@ -25,12 +25,13 @@ class TableTimes extends Component {
 	}
 
 	render() {
-		let { times, scrambles } = this.props;
+		let { times, scrambles, dates } = this.props;
 
 		return (
 			<React.Fragment>
 			<Display show={this.state.hovered}>
 				<p><span style={{fontWeight:"normal"}}>ID:</span> {this.state.hoveredID+1}</p>
+				<p><span style={{fontWeight:"normal"}}>Date Solved:</span> {dates[this.state.hoveredID]}</p>
 				<p><span style={{fontWeight:"normal"}}>Scramble:</span> {scrambles[this.state.hoveredID]}</p>
 			</Display>
 			<div className="container-scroll">

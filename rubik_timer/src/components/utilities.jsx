@@ -50,3 +50,14 @@ export const avg12 = (times) => {
 
 	return {min, sec, msec};
 }
+
+export const getCurDate = () => {
+	let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+	let date = new Date();
+	let day = String(date.getDate()).padStart(2, '0');
+	let month = months[date.getMonth()];
+	let year = date.getFullYear();
+	let hour = String(date.getHours()).padStart(2, '0');
+	let minute = String(date.getMinutes()).padStart(2, '0');
+	return `${hour}:${minute} UTC | ${day}-${month}-${year}`; 
+}

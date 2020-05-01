@@ -19,20 +19,22 @@ export default class Firebase {
         db = firebase.firestore(app);
     }
 
-    getData = (ip, setTimes, setScrambles) => {
+    getData = (ip, setTimes, setScrambles, setDates) => {
         db.doc(`times/${ip}`).get().then(response => {
             if (response._document == null || response.data()["times"] == null) {
                 setTimes([]);
                 setScrambles([]);
+                setDates([]);
             } else {
                 setTimes(response.data()["times"]);
                 setScrambles(response.data()["scrambles"]);
+                setDates(response.data()["dates"]);
             }
         });
     }
 
-    storeData = (ip, times, scrambles) => {
-        let d = {times, scrambles};
+    storeData = (ip, times, scrambles, dates) => {
+        let d = {times, scrambles, dates};
         db.doc(`times/${ip}`).set(d).then();
     }
 }

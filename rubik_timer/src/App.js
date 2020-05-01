@@ -17,7 +17,8 @@ class AppBase extends Component {
       timerRunning: false,
       timerPrepare: false,
       times: [], 
-      scrambles: []
+      scrambles: [],
+      dates: []
     };
   }
   
@@ -37,8 +38,7 @@ class AppBase extends Component {
     axios.get("http://api.ipify.org/?format=json")
     .then((response) => {
       setIP(response.data.ip);
-      this.props.firebase.getData(IP, this.setTimes, this.setScrambles); //populate times array from db values
-
+      this.props.firebase.getData(IP, this.setTimes, this.setScrambles, this.setDates); //populate times array from db values
     }).catch((err) => {
       console.log(err);
     });   
@@ -54,6 +54,12 @@ class AppBase extends Component {
     //add the values of current scrambles to the scrambles from db
     Array.prototype.push.apply(s, this.state.scrambles);
     this.setState({ scrambles: s });
+  }
+
+  setDates = (d) => {
+    if (!d) return;
+    //add the values of current scrambles to the scrambles from db
+    this.setState({ dates: d });
   }
 
   updateTimer = (e) => {
@@ -76,17 +82,23 @@ class AppBase extends Component {
     this.setState({scrambles: this.state.scrambles});
   } 
 
+  addDate = (date) => {
+    this.state.dates.push(date);
+    this.setState({dates: this.state.dates});
+  } 
+
   render() {
     return (
     <React.Fragment>
       <div className="main">
         <div className="main-container">
           <Timer running={this.state.timerRunning} prepare = {this.state.timerPrepare} 
-                times={this.state.times} addTime={this.addTime} scrambles={this.state.scrambles}/>
+                times={this.state.times} addTime={this.addTime} scrambles={this.state.scrambles}
+                dates={this.state.dates} addDate={this.addDate}/>
           <ScrambleGen update={this.state.timerRunning} addScramble={this.addScramble}/>
         </div>
       </div>
-      <TableTimes times={this.state.times} scrambles={this.state.scrambles}/>
+      <TableTimes times={this.state.times} dates={this.state.dates} scrambles={this.state.scrambles}/>
       <Graph times={this.state.times}/>
     </React.Fragment>
     );

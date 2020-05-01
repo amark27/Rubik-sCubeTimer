@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Avg from "./avg.jsx";
-import { convertSec, displayTime } from "./utilities.jsx";
+import { convertSec, displayTime, getCurDate } from "./utilities.jsx";
 import { withFirebase } from "./firebase/firebaseIndex.js";
 import { IP } from "../globals";
 
@@ -17,12 +17,16 @@ class BaseTimer extends Component {
 			if (prevProps.running) {
 				let newTime = this.stop();
 				this.props.addTime(newTime);
-
+				this.props.addDate(getCurDate());
+				
 				//store to firebase firestore after adding time
-				//take all scrambles but the last one because the last one is for future solve
-				let scramble = this.props.scrambles.slice(0,-1);
 				this.setState({times: this.props.times}, 
-							  () => {this.props.firebase.storeData(IP, this.state.times, scramble)});
+							  () => {
+								//scrambles may include a future scramble so exclude if it does
+								let scramble = this.props.scrambles.length === this.state.times.length ? 
+											   this.props.scrambles : this.props.scrambles.slice(0,-1);
+								this.props.firebase.storeData(IP, this.state.times, scramble, this.props.dates);}
+							);
 			} else {
 				this.setState({min: 0, sec: 0, msec: 0});
 				this.increment();
