@@ -107,4 +107,22 @@ body {
 .container-scroll div.container-table table.timeTable td, .container-scroll div.container-table table.timeTable th {
   padding: 5px;
 }
+
+div.display-window {
+  position: absolute;
+  z-index: 100;
+  width: 400px;
+  height: 100px;
+  top: 10px;
+  left: 150px;
+  background-color: white;
+  color: black;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+div.display-window p {
+  font-weight: bold;
+  margin: 0;
+}
 /*# sourceMappingURL=styles.css.map */

@@ -24,7 +24,6 @@ class AppBase extends Component {
   componentDidMount(){
     window.addEventListener('keyup', (e) => this.updateTimer(e));
     window.addEventListener('keydown', (e) => this.flashTimer(e));
-
     //get ip to register user
     this.setUp();
   }
@@ -87,7 +86,7 @@ class AppBase extends Component {
           <ScrambleGen update={this.state.timerRunning} addScramble={this.addScramble}/>
         </div>
       </div>
-      <TableTimes times={this.state.times}/>
+      <TableTimes times={this.state.times} scrambles={this.state.scrambles}/>
       <Graph times={this.state.times}/>
     </React.Fragment>
     );

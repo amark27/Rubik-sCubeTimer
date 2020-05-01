@@ -1,17 +1,40 @@
 import React, { Component } from "react";
-import { displayTime, separateSec } from "./utilities.jsx";
+import HoverRow from "./hoverRow.jsx";
+import Display from "./displayWindow.jsx";
 
 class TableTimes extends Component {
-	
+	constructor(props){
+		super(props);
+		this.state = {
+			hovered: false,
+			hoveredID: 0
+		};
+	}
+
 	componentDidUpdate(){
 		var elem = document.querySelector("#tableTimes");
 		elem.scrollTop = elem.scrollHeight;
 	}
 
+	handleHoverEnter = (id) => {
+		this.setState({hovered: true, hoveredID: id});
+	}
+
+	handleHoverLeave = () => {
+		this.setState({hovered: false});
+	}
+
 	render() {
-		let { times } = this.props;
+		let { times, scrambles } = this.props;
+
 		return (
+			<React.Fragment>
+			<Display show={this.state.hovered}>
+				<p><span style={{fontWeight:"normal"}}>ID:</span> {this.state.hoveredID+1}</p>
+				<p><span style={{fontWeight:"normal"}}>Scramble:</span> {scrambles[this.state.hoveredID]}</p>
+			</Display>
 			<div className="container-scroll">
+				
 				<div id="tableTimes" className="container-table">
 					<table className="timeTable">
 						<tbody>
@@ -20,18 +43,16 @@ class TableTimes extends Component {
 								<th>Time</th>
 							</tr>
 							{times.map((curr, index) => {
-								let { min, sec, msec } = separateSec(curr);
 								return (
-									<tr key={index}>
-										<td>{index + 1}</td>
-										<td>{displayTime(min, sec, msec)}</td>
-									</tr>
-								);
+								<HoverRow key={index} index={index} time={curr} 
+								handleHoverEnter={() => this.handleHoverEnter(index)} handleHoverLeave={this.handleHoverLeave}/>
+								)
 							})}
 						</tbody>
 					</table>
 				</div>
 			</div>
+			</React.Fragment>
 		);
 	}
 }
