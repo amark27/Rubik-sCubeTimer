@@ -125,4 +125,10 @@ div.display-window p {
   font-weight: bold;
   margin: 0;
 }
+
+.button-wrapper {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
 /*# sourceMappingURL=styles.css.map */

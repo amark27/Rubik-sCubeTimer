@@ -4,6 +4,7 @@ import Timer from "./components/timer.jsx";
 import TableTimes from "./components/timeTable.jsx";
 import Graph from "./components/graph.jsx";
 import ScrambleGen from "./components/scrambleGen.jsx";
+import SettingsButton from "./components/settings.jsx";
 import { withFirebase } from "./components/firebase/firebaseIndex";
 import axios from "axios";
 import { IP, setIP } from "./globals.js";
@@ -90,6 +91,7 @@ class AppBase extends Component {
   render() {
     return (
     <React.Fragment>
+      <SettingsButton/>
       <div className="main">
         <div className="main-container">
           <Timer running={this.state.timerRunning} prepare = {this.state.timerPrepare} 
