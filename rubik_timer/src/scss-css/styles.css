@@ -131,4 +131,44 @@ div.display-window p {
   right: 10px;
   top: 10px;
 }
+
+.modal-close {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+.modal-content {
+  padding: 16px 24px !important;
+}
+
+.modal-content .github-button {
+  width: 100%;
+}
+
+.modal-content .github-button button {
+  color: black;
+  margin: 0 auto;
+  display: block;
+}
+
+.modal-content .MuiSwitch-thumb {
+  color: #083668;
+}
+
+.modal-content .MuiSwitch-track {
+  background-color: #32373A;
+}
+
+.modal-content .MuiSwitch-colorSecondary.Mui-checked + .MuiSwitch-track {
+  background-color: #083668;
+}
+
+.modal-content .MuiSwitch-colorSecondary.Mui-checked {
+  color: #083668;
+}
+
+.modal-content .MuiSwitch-colorSecondary.Mui-checked:hover {
+  background-color: rgba(20, 22, 23, 0.04);
+}
 /*# sourceMappingURL=styles.css.map */

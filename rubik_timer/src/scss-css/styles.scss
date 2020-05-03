@@ -1,4 +1,6 @@
 $grey: #32373A;
+$blue: #619DDD;
+$darkBlue: #083668;
 
 body {
     background-color: $grey;
@@ -120,4 +122,47 @@ div.display-window{
     right: 10px;
     top: 10px;
 }
+
+.modal-close {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+
+.modal-content{
+    padding: 16px 24px !important;
+    
+    .github-button {
+        width: 100%;
+
+        button {
+            color: black;
+            margin: 0 auto;
+            display: block;
+        }
+    }
+
+    .MuiSwitch-thumb{
+        color: $darkBlue;
+    }
+
+    .MuiSwitch-track {
+        background-color: $grey;
+    }
+    
+    .MuiSwitch-colorSecondary.Mui-checked + .MuiSwitch-track{
+        background-color: $darkBlue;
+    }
+
+    .MuiSwitch-colorSecondary.Mui-checked{
+        color: $darkBlue;
+    }
+
+    .MuiSwitch-colorSecondary.Mui-checked:hover{
+        background-color: rgba(20,22,23,0.04);
+    }
+}
+
+
 

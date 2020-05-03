@@ -5,7 +5,7 @@ const Display = (props) => {
     return props.show ? 
     (<div className="display-window">
 		{props.children}
-	</div>) : "";
+	</div>) : null;
 }
 
 export default Display;
