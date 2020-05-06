@@ -12,6 +12,8 @@ import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import { Typography } from "@material-ui/core";
 
+const SPACE_KEY = 32;
+
 const SettingsButton = (props) => {
     const {setDisplay, showTable, showGraph} = props;
     const [clicked, setClicked] = useState(false);
@@ -36,10 +38,16 @@ const SettingsButton = (props) => {
         setDisplayGraph(!displayGraph);
     }
 
+    const preventClick = (e) => {
+        if (e.keyCode === SPACE_KEY)
+            e.preventDefault();
+    }
+
     return (
         <React.Fragment>
         <div className="button-wrapper">
-            <Button variant="contained" disableElevation onClick={handleOpen}>
+            <Button variant="contained" disableElevation onClick={handleOpen} 
+            onKeyUp={preventClick}>
                 <SettingsIcon/>
             </Button>
         </div>
