@@ -108,6 +108,10 @@ body {
   padding: 5px;
 }
 
+.full-height {
+  height: calc(100vh - 10px);
+}
+
 div.display-window {
   position: absolute;
   z-index: 100;

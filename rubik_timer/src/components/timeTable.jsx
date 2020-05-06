@@ -13,7 +13,8 @@ class TableTimes extends Component {
 
 	componentDidUpdate(){
 		var elem = document.querySelector("#tableTimes");
-		elem.scrollTop = elem.scrollHeight;
+		if (elem != null)
+			elem.scrollTop = elem.scrollHeight;
 	}
 
 	handleHoverEnter = (id) => {
@@ -25,17 +26,17 @@ class TableTimes extends Component {
 	}
 
 	render() {
-		let { times, scrambles, dates } = this.props;
+		const { times, scrambles, dates, display, displayGraph } = this.props;
 
 		return (
-			<React.Fragment>
+			display ? 
+			(<React.Fragment>
 			<Display show={this.state.hovered}>
 				<p><span style={{fontWeight:"normal"}}>ID:</span> {this.state.hoveredID+1}</p>
 				<p><span style={{fontWeight:"normal"}}>Date Solved:</span> {dates[this.state.hoveredID]}</p>
 				<p><span style={{fontWeight:"normal"}}>Scramble:</span> {scrambles[this.state.hoveredID]}</p>
 			</Display>
-			<div className="container-scroll">
-				
+			<div className={"container-scroll" + (!displayGraph ? " full-height" : "")}>
 				<div id="tableTimes" className="container-table">
 					<table className="timeTable">
 						<tbody>
@@ -53,7 +54,8 @@ class TableTimes extends Component {
 					</table>
 				</div>
 			</div>
-			</React.Fragment>
+			</React.Fragment>)
+			: null
 		);
 	}
 }

@@ -12,10 +12,11 @@ import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import { Typography } from "@material-ui/core";
 
-const SettingsButton = () => {
+const SettingsButton = (props) => {
+    const {setDisplay, showTable, showGraph} = props;
     const [clicked, setClicked] = useState(false);
-    const [displayTime, setDisplayTime] = useState(true);
-    const [displayGraph, setDisplayGraph] = useState(true);
+    const [displayTime, setDisplayTime] = useState(showTable);
+    const [displayGraph, setDisplayGraph] = useState(showGraph);
 
     const handleOpen = () => {
         setClicked(true);
@@ -26,10 +27,12 @@ const SettingsButton = () => {
     };
 
     const toggleDisplayTime = () => {
+        setDisplay('table', !displayTime);
         setDisplayTime(!displayTime);
     }
 
     const toggleDisplayGraph = () => {
+        setDisplay('graph', !displayGraph);
         setDisplayGraph(!displayGraph);
     }
 

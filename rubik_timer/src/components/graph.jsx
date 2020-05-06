@@ -5,7 +5,7 @@ import {orange} from "./utilities.jsx";
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 const Graph = props => {
-    let { times: points } = props;
+    let { times: points, display } = props;
 
     points = points.map((time, ind) => ({x: ind + 1, y: time}));
 
@@ -37,7 +37,9 @@ const Graph = props => {
 	};
 
 	return (
-		<CanvasJSChart options={options} containerProps={{ width: "100%", bottom: "0px", display: "table-row"}} />
+		display ?
+		(<CanvasJSChart options={options} containerProps={{ width: "100%", bottom: "0px", display: "table-row"}} />)
+		: null
 	);
 };
 

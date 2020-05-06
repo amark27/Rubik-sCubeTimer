@@ -19,7 +19,8 @@ class AppBase extends Component {
       timerPrepare: false,
       times: [], 
       scrambles: [],
-      dates: []
+      dates: [],
+      display: {graph: true, table: true}
     };
   }
   
@@ -88,10 +89,21 @@ class AppBase extends Component {
     this.setState({dates: this.state.dates});
   } 
 
+  setDisplay = (comp, state) => {
+    let displayObj = this.state.display;
+    //component doesn't exist
+    if (!(comp in displayObj))
+      return null;
+    
+    displayObj[comp] = state;
+    this.setState({display: displayObj});
+  }
+
   render() {
     return (
     <React.Fragment>
-      <SettingsButton/>
+      <SettingsButton showTable={this.state.display['table']} showGraph={this.state.display['graph']} 
+      setDisplay={this.setDisplay}/>
       <div className="main">
         <div className="main-container">
           <Timer running={this.state.timerRunning} prepare = {this.state.timerPrepare} 
@@ -100,8 +112,9 @@ class AppBase extends Component {
           <ScrambleGen update={this.state.timerRunning} addScramble={this.addScramble}/>
         </div>
       </div>
-      <TableTimes times={this.state.times} dates={this.state.dates} scrambles={this.state.scrambles}/>
-      <Graph times={this.state.times}/>
+      <TableTimes display={this.state.display['table']} times={this.state.times} 
+      displayGraph={this.state.display['graph']} dates={this.state.dates} scrambles={this.state.scrambles}/>
+      <Graph display={this.state.display['graph']} times={this.state.times}/>
     </React.Fragment>
     );
   }
