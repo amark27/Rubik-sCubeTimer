@@ -48,7 +48,7 @@ const HelpButton = (props) => {
                     </IconButton>
                 </div>
             </MuiDialogTitle>
-            <DialogContent className="modal-content">
+            <DialogContent dividers className="modal-content">
                 <Typography variant="h6">
                     How to Use
                 </Typography>
@@ -56,12 +56,22 @@ const HelpButton = (props) => {
                     <li><Typography>Press space bar to start and stop the timer</Typography></li>
                     <li><Typography>Hover over times in table to see more details about each solve</Typography></li>
                 </ul>
+                <Typography variant="h6">
+                    Terminology
+                </Typography>
+                <ul>
+                    <li><Typography>
+                    Average of 5: average of the last 5 times after removing the fastest and slowest times (as per regulation) 
+                    </Typography></li>
+                    <li><Typography>
+                    Average of 12: average of the last 12 times after removing the fastest and slowest times (as per regulation) 
+                    </Typography></li>
+                </ul>
                 <br></br>
                 <Typography>
-                    <b>IMPORTANT:</b> your AdBlocker needs to be turned off in order for this app to work 
+                    <b>IMPORTANT:</b> your AdBlocker must be turned off in order for this app to work 
                 </Typography>
                 <br></br>
-
                 <Typography>
                     This timer was made with ReactJS, CanvasJS, Firebase and MaterialUI. It is not yet optimized for mobile use. Source code can be found below.
                 </Typography>
