@@ -6,8 +6,9 @@ var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 const Graph = props => {
     let { times: points, display } = props;
+	let length = points.length;
 
-    points = points.map((time, ind) => ({x: ind + 1, y: time}));
+    points = points.map((time, ind) => ({x: length-ind, y: time}));
 
 	const options = {
 		animationEnabled: true,
