@@ -5,6 +5,7 @@ import TableTimes from "./components/timeTable.jsx";
 import Graph from "./components/graph.jsx";
 import ScrambleGen from "./components/scrambleGen.jsx";
 import SettingsButton from "./components/settings.jsx";
+import HelpButton from "./components/help.jsx";
 import { withFirebase } from "./components/firebase/firebaseIndex";
 import axios from "axios";
 import { IP, setIP } from "./globals.js";
@@ -108,8 +109,11 @@ class AppBase extends Component {
   render() {
     return (
     <React.Fragment>
-      <SettingsButton showTable={this.state.display['table']} showGraph={this.state.display['graph']} 
-      setDisplay={this.setDisplay}/>
+      <div className="button-wrapper">
+        <HelpButton/>
+        <SettingsButton showTable={this.state.display['table']} showGraph={this.state.display['graph']} 
+        setDisplay={this.setDisplay}/> 
+      </div>
       <div className="main">
         <div className={"main-container" + (this.state.display['table'] ? "" : " full-width")}>
           <Timer running={this.state.timerRunning} prepare = {this.state.timerPrepare} 

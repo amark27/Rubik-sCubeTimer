@@ -156,10 +156,17 @@ div.display-window p {
   margin: 0;
 }
 
-.button-wrapper {
+div.button-wrapper {
   position: absolute;
   right: 10px;
   top: 10px;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+div.button-wrapper button {
+  margin: 10px;
 }
 
 .modal-close {
