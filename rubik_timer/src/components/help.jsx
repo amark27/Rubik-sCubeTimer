@@ -58,6 +58,11 @@ const HelpButton = (props) => {
                 </ul>
                 <br></br>
                 <Typography>
+                    <b>IMPORTANT:</b> your AdBlocker needs to be turned off in order for this app to work 
+                </Typography>
+                <br></br>
+
+                <Typography>
                     This timer was made with ReactJS, CanvasJS, Firebase and MaterialUI. It is not yet optimized for mobile use. Source code can be found below.
                 </Typography>
                 <div className="github-button">

@@ -44,7 +44,7 @@ class AppBase extends Component {
   }
   
   setUp = () => {
-    axios.get("http://api.ipify.org/?format=json")
+    axios.get("https://api.ipify.org/?format=json")
     .then((response) => {
       setIP(response.data.ip);
       this.props.firebase.getData(IP, this.setTimes, this.setScrambles, this.setDates); //populate times array from db values
