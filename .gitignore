@@ -6,3 +6,9 @@ rubik_timer/.vscode/
 
 #env
 rubik_timer/.env
+
+#deploy
+rubik_timer/build
+rubik_timer/firebase*
+rubik_timer/.firebaserc
+rubik_timer/.gitignore
