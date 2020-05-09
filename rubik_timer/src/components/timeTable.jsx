@@ -11,12 +11,6 @@ class TableTimes extends Component {
 		};
 	}
 
-	componentDidUpdate(){
-		var elem = document.querySelector("#tableTimes");
-		if (elem != null)
-			elem.scrollTop = elem.scrollHeight;
-	}
-
 	handleHoverEnter = (id) => {
 		this.setState({hovered: true, hoveredID: id});
 	}
@@ -27,6 +21,7 @@ class TableTimes extends Component {
 
 	render() {
 		const { times, scrambles, dates, display, displayGraph } = this.props;
+		let length = times.length;
 
 		return (
 			display ? 
@@ -36,8 +31,8 @@ class TableTimes extends Component {
 				<p><span style={{fontWeight:"normal"}}>Date Solved:</span> {dates[this.state.hoveredID]}</p>
 				<p><span style={{fontWeight:"normal"}}>Scramble:</span> {scrambles[this.state.hoveredID]}</p>
 			</Display>
-			<div className={"container-scroll" + (!displayGraph ? " full-height" : "")}>
-				<div id="tableTimes" className="container-table">
+			<div id="tableTimes" className={"container-scroll" + (!displayGraph ? " full-height" : "")}>
+				<div className="container-table">
 					<table className="timeTable">
 						<tbody>
 							<tr>
@@ -45,9 +40,10 @@ class TableTimes extends Component {
 								<th>Time</th>
 							</tr>
 							{times.map((curr, index) => {
+								let realIndex = length-1-index;
 								return (
-								<HoverRow key={index} index={index} time={curr} 
-								handleHoverEnter={() => this.handleHoverEnter(index)} handleHoverLeave={this.handleHoverLeave}/>
+								<HoverRow key={index} index={realIndex} time={curr} 
+								handleHoverEnter={() => this.handleHoverEnter(realIndex)} handleHoverLeave={this.handleHoverLeave}/>
 								)
 							})}
 						</tbody>

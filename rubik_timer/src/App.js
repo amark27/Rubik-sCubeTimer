@@ -12,6 +12,12 @@ import { IP, setIP } from "./globals.js";
 const SPACE_KEY = 32;
 
 class AppBase extends Component {
+  /*
+  * times are stored in reverse order (most recent first then oldest times after)
+  * scrambles and dates are stored in true order (oldest first then most recent after)
+  * display used to determine whether or not to show the graph + time table
+  */
+  
   constructor(props){
     super(props);
     this.state = {
@@ -75,7 +81,7 @@ class AppBase extends Component {
   }
 
   addTime = (time) => {
-    this.state.times.push(time);
+    this.state.times.unshift(time);
     this.setState({times: this.state.times});
   } 
 
@@ -105,7 +111,7 @@ class AppBase extends Component {
       <SettingsButton showTable={this.state.display['table']} showGraph={this.state.display['graph']} 
       setDisplay={this.setDisplay}/>
       <div className="main">
-        <div className="main-container">
+        <div className={"main-container" + (this.state.display['table'] ? "" : " full-width")}>
           <Timer running={this.state.timerRunning} prepare = {this.state.timerPrepare} 
                 times={this.state.times} addTime={this.addTime} scrambles={this.state.scrambles}
                 dates={this.state.dates} addDate={this.addDate}/>

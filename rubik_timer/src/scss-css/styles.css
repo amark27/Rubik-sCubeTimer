@@ -1,6 +1,7 @@
 body {
   background-color: #32373A;
   color: white;
+  overflow: hidden;
 }
 
 .main {
@@ -11,13 +12,20 @@ body {
 
 .main .main-container {
   display: inline-block;
-  width: 100%;
+  width: calc(100% - 170px);
+  padding: 0 20px 0 150px;
 }
 
 .main .main-container .timer {
   margin: 0;
   text-align: center;
   font-size: 70pt;
+}
+
+@media (max-width: 1050px) {
+  .main .main-container .timer {
+    font-size: 50pt;
+  }
 }
 
 .main .main-container .timer.flash {
@@ -51,12 +59,25 @@ body {
 
 .main .main-container .average {
   text-align: center;
+  font-size: 1.25rem;
+}
+
+@media (max-width: 1050px) {
+  .main .main-container .average {
+    font-size: 1rem;
+  }
 }
 
 .main .main-container .scramble {
   margin-top: 3rem;
   text-align: center;
   font-size: 25pt;
+}
+
+@media (max-width: 1050px) {
+  .main .main-container .scramble {
+    font-size: 1.5rem;
+  }
 }
 
 .container-scroll {
@@ -110,6 +131,11 @@ body {
 
 .full-height {
   height: calc(100vh - 10px);
+}
+
+.full-width {
+  width: 100% !important;
+  padding-left: 0 !important;
 }
 
 div.display-window {
