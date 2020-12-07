@@ -1,6 +1,7 @@
 import React from "react";
 import CanvasJSReact from "../assets/canvasjs.react.js";
-import {orange} from "./utilities.jsx";
+import { isMobile } from 'react-device-detect';
+import { orange } from "./utilities.jsx";
 
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
@@ -39,7 +40,7 @@ const Graph = props => {
 
 	return (
 		display ?
-		(<CanvasJSChart options={options} containerProps={{ width: "100%", bottom: "0px", display: "table-row"}} />)
+		(<CanvasJSChart options={options} containerProps={{ width: "100%", height: isMobile ? "30vh" : "", bottom: "0px", display: "table-row"}} />)
 		: null
 	);
 };

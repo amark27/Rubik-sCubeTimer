@@ -9,7 +9,7 @@ class BaseTimer extends Component {
 		super(props);
 
 		this.state = { min: 0, sec: 0, msec: 0, running: this.props.running, 
-					prepare: this.props.prepare, times: this.props.times};
+					prepare: this.props.prepare};
 	}
 
 	componentDidUpdate(prevProps) {
@@ -18,15 +18,11 @@ class BaseTimer extends Component {
 				let newTime = this.stop();
 				this.props.addTime(newTime);
 				this.props.addDate(getCurDate());
-				
-				//store to firebase firestore after adding time
-				this.setState({times: this.props.times}, 
-							  () => {
-								//scrambles may include a future scramble so exclude if it does
-								let scramble = this.props.scrambles.length === this.state.times.length ? 
-											   this.props.scrambles : this.props.scrambles.slice(0,-1);
-								this.props.firebase.storeData(IP, this.state.times, scramble, this.props.dates);}
-							);
+
+				let scramble = this.props.scrambles.length === this.props.times.length ? 
+				this.props.scrambles : this.props.scrambles.slice(0,-1);
+				//store new time
+ 				this.props.firebase.storeData(IP, this.props.times, scramble, this.props.dates);
 			} else {
 				this.setState({min: 0, sec: 0, msec: 0});
 				this.increment();
@@ -67,7 +63,7 @@ class BaseTimer extends Component {
 		return (
 			<React.Fragment>
 				<h1 className={this.getClasses()}>{displayTime(this.state.min, this.state.sec, this.state.msec)}</h1>
-				<Avg times={this.state.times}/>
+				<Avg times={this.props.times}/>
 			</React.Fragment>
 		);
 	}

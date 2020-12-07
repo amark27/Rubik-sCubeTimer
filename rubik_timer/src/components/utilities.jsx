@@ -28,7 +28,7 @@ export const avg5 = (times) => {
 	let avg;
 	let min = null, sec = null, msec = null;
 	if (times.length > 4){
-		avg = times.slice(-5);
+		avg = times.slice(0,5);
 		avg.sort((x,y) => (x - y)); //sort in ascending order
 		avg = avg.slice(1,4).reduce((acc, curr) => acc + curr) / 3; //average of middle 3
 		({min, sec, msec} = separateSec(avg));
@@ -42,7 +42,7 @@ export const avg12 = (times) => {
 	let avg;
 	let min = null, sec = null, msec = null;
 	if (times.length > 11){
-        avg = times.slice(-12);
+        avg = times.slice(0,12);
 		avg.sort((x,y) => (x - y)); //sort in ascending order
 		avg = avg.slice(1,11).reduce((acc, curr) => acc + curr) / 10; //average of middle 10
 		({min, sec, msec} = separateSec(avg));

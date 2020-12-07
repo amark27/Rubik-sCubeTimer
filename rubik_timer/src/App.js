@@ -7,6 +7,7 @@ import ScrambleGen from "./components/scrambleGen.jsx";
 import SettingsButton from "./components/settings.jsx";
 import HelpButton from "./components/help.jsx";
 import { withFirebase } from "./components/firebase/firebaseIndex";
+import { isMobile } from 'react-device-detect';
 import axios from "axios";
 import { IP, setIP } from "./globals.js";
 
@@ -32,15 +33,19 @@ class AppBase extends Component {
   }
   
   componentDidMount(){
-    window.addEventListener('keyup', (e) => this.updateTimer(e));
-    window.addEventListener('keydown', (e) => this.flashTimer(e));
+    if (!isMobile) {
+      window.addEventListener('keyup', (e) => this.updateTimer(e));
+      window.addEventListener('keydown', (e) => this.flashTimer(e));
+    }
     //get ip to register user
     this.setUp();
   }
 
   componentWillUnmount(){
-    window.removeEventListener('keyup', (e) => this.updateTimer(e));
-    window.removeEventListener('keydown', (e) => this.flashTimer(e));
+    if (!isMobile) {
+      window.removeEventListener('keyup', (e) => this.updateTimer(e));
+      window.removeEventListener('keydown', (e) => this.flashTimer(e));
+    }
   }
   
   setUp = () => {
@@ -107,6 +112,7 @@ class AppBase extends Component {
   }
 
   render() {
+    console.log(isMobile);
     return (
     <React.Fragment>
       <div className="button-wrapper">

@@ -81,6 +81,10 @@ body {
 
     div.container-table{
         direction: ltr;
+        
+        @media (max-width: $large){
+            font-size: 1.5rem;
+        }
 
         table.timeTable {
             border-collapse: collapse;
@@ -128,14 +132,15 @@ body {
 div.display-window{
     position: absolute;
     z-index: 100;
-    width: 400px;
-    height: 100px;
     top: 10px;
     left: 150px;
     background-color: white;
     color: black;
     border-radius: 10px;
-    padding: 10px;
+
+    .MuiPaper-root {
+        padding: 10px;
+    }
 
     p {
         font-weight: bold;
