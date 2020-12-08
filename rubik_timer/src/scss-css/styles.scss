@@ -1,9 +1,9 @@
 $grey: #32373A;
 $blue: #619DDD;
 $darkBlue: #083668;
+$small: 450px;
 $medium: 774px;
 $large: 1050px;
-
 
 body {
     background-color: $grey;
@@ -30,6 +30,10 @@ body {
                 font-size: 50pt;
             }
 
+            @media (max-width: $small){
+                font-size: 35pt;
+            }
+
             &.flash{
                 animation-name: flash-anim;
                 animation-direction: alternate;
@@ -54,6 +58,10 @@ body {
             @media (max-width: $large){
                 font-size: 1rem;
             }
+
+            @media (max-width: $small){
+                font-size: 0.75rem;
+            }
         }
 
         .scramble{
@@ -64,6 +72,10 @@ body {
             @media (max-width: $large){
                 font-size: 1.5rem;
             }
+
+            @media (max-width: $small){
+                font-size: 1rem;
+            }
         }
     }
 }
@@ -71,19 +83,24 @@ body {
 .container-scroll{
     overflow-y: auto;
     overflow-x: hidden;
-    height: calc(100vh - 400px);
+    height: 60vh;
     width: 150px;
     left: 10px;
     top: 10px;
     position: absolute;
     font-size: 20pt;
     direction: rtl;
+    
 
     div.container-table{
         direction: ltr;
         
         @media (max-width: $large){
             font-size: 1.5rem;
+        }
+
+        @media (max-width: $small){
+            font-size: 1rem;
         }
 
         table.timeTable {

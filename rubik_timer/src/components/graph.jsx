@@ -40,7 +40,7 @@ const Graph = props => {
 
 	return (
 		display ?
-		(<CanvasJSChart options={options} containerProps={{ width: "100%", height: isMobile ? "30vh" : "", bottom: "0px", display: "table-row"}} />)
+		(<CanvasJSChart options={options} containerProps={{ width: "100%", height: "40vh", bottom: "0px", display: "table-row"}} />)
 		: null
 	);
 };

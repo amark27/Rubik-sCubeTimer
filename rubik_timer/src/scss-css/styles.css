@@ -28,6 +28,12 @@ body {
   }
 }
 
+@media (max-width: 450px) {
+  .main .main-container .timer {
+    font-size: 35pt;
+  }
+}
+
 .main .main-container .timer.flash {
   -webkit-animation-name: flash-anim;
           animation-name: flash-anim;
@@ -68,6 +74,12 @@ body {
   }
 }
 
+@media (max-width: 450px) {
+  .main .main-container .average {
+    font-size: 0.75rem;
+  }
+}
+
 .main .main-container .scramble {
   margin-top: 3rem;
   text-align: center;
@@ -80,10 +92,16 @@ body {
   }
 }
 
+@media (max-width: 450px) {
+  .main .main-container .scramble {
+    font-size: 1rem;
+  }
+}
+
 .container-scroll {
   overflow-y: auto;
   overflow-x: hidden;
-  height: calc(100vh - 400px);
+  height: 60vh;
   width: 150px;
   left: 10px;
   top: 10px;
@@ -99,6 +117,12 @@ body {
 @media (max-width: 1050px) {
   .container-scroll div.container-table {
     font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 450px) {
+  .container-scroll div.container-table {
+    font-size: 1rem;
   }
 }
 

@@ -53,8 +53,8 @@ const HelpButton = (props) => {
                     How to Use
                 </Typography>
                 <ul>
-                    <li><Typography>Press space bar on desktop or tap timer on mobile to start and stop the timer</Typography></li>
-                    <li><Typography>Hover/tap times in table to see more details about each solve</Typography></li>
+                    <li><Typography>Press space bar on desktop or tap timer on mobile, to start and stop the timer</Typography></li>
+                    <li><Typography>Hover on desktop or tap on mobile, times in table to see more details about each solve</Typography></li>
                 </ul>
                 <Typography variant="h6">
                     Terminology
