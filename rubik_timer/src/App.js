@@ -30,12 +30,17 @@ class AppBase extends Component {
       dates: [],
       display: {graph: true, table: true}
     };
+
+    this.timerBoxRef = React.createRef();
   }
   
   componentDidMount(){
     if (!isMobile) {
       window.addEventListener('keyup', (e) => this.updateTimer(e));
       window.addEventListener('keydown', (e) => this.flashTimer(e));
+    } else {
+      window.addEventListener('touchend', (e) => this.updateTimer(e));
+      window.addEventListener('touchstart', (e) => this.flashTimer(e));
     }
     //get ip to register user
     this.setUp();
@@ -45,6 +50,9 @@ class AppBase extends Component {
     if (!isMobile) {
       window.removeEventListener('keyup', (e) => this.updateTimer(e));
       window.removeEventListener('keydown', (e) => this.flashTimer(e));
+    } else {
+      window.removeEventListener('touchend', (e) => this.updateTimer(e));
+      window.removeEventListener('touchstart', (e) => this.flashTimer(e));
     }
   }
   
@@ -77,12 +85,12 @@ class AppBase extends Component {
   }
 
   updateTimer = (e) => {
-    if (e.keyCode === SPACE_KEY) 
+    if (e.keyCode === SPACE_KEY || (isMobile && this.timerBoxRef.current.contains(e.target))) 
       this.setState(state => ({timerRunning: !state.timerRunning, timerPrepare: false}));
   }
   
   flashTimer = (e) => {
-    if (e.keyCode === SPACE_KEY)
+    if (e.keyCode === SPACE_KEY || (isMobile && this.timerBoxRef.current.contains(e.target)))
       this.setState({timerPrepare: true});
   }
 
@@ -112,7 +120,6 @@ class AppBase extends Component {
   }
 
   render() {
-    console.log(isMobile);
     return (
     <React.Fragment>
       <div className="button-wrapper">
@@ -122,10 +129,12 @@ class AppBase extends Component {
       </div>
       <div className="main">
         <div className={"main-container" + (this.state.display['table'] ? "" : " full-width")}>
-          <Timer running={this.state.timerRunning} prepare = {this.state.timerPrepare} 
-                times={this.state.times} addTime={this.addTime} scrambles={this.state.scrambles}
-                dates={this.state.dates} addDate={this.addDate}/>
-          <ScrambleGen update={this.state.timerRunning} addScramble={this.addScramble}/>
+          <div ref={this.timerBoxRef}>
+            <Timer running={this.state.timerRunning} prepare = {this.state.timerPrepare} 
+                  times={this.state.times} addTime={this.addTime} scrambles={this.state.scrambles}
+                  dates={this.state.dates} addDate={this.addDate}/>
+            <ScrambleGen update={this.state.timerRunning} addScramble={this.addScramble}/>
+          </div>
         </div>
       </div>
       <TableTimes display={this.state.display['table']} times={this.state.times} 

@@ -53,8 +53,8 @@ const HelpButton = (props) => {
                     How to Use
                 </Typography>
                 <ul>
-                    <li><Typography>Press space bar to start and stop the timer</Typography></li>
-                    <li><Typography>Hover over times in table to see more details about each solve</Typography></li>
+                    <li><Typography>Press space bar on desktop or tap timer on mobile to start and stop the timer</Typography></li>
+                    <li><Typography>Hover/tap times in table to see more details about each solve</Typography></li>
                 </ul>
                 <Typography variant="h6">
                     Terminology
@@ -73,7 +73,7 @@ const HelpButton = (props) => {
                 </Typography>
                 <br></br>
                 <Typography>
-                    This timer was made with ReactJS, CanvasJS, Firebase and MaterialUI. It is not yet optimized for mobile use. Source code can be found below.
+                    This timer was made with ReactJS, CanvasJS, Firebase and MaterialUI. Source code can be found below.
                 </Typography>
                 <div className="github-button">
                     <IconButton onClick={() => window.open('https://github.com/amark27/RubiksCubeTimer')}>
