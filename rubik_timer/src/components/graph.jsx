@@ -1,6 +1,5 @@
 import React from "react";
 import CanvasJSReact from "../assets/canvasjs.react.js";
-import { isMobile } from 'react-device-detect';
 import { orange } from "./utilities.jsx";
 
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
